@@ -1,14 +1,15 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title">Body Type Quick Edit</h4>
+    <h4 class="modal-title">Places Quick Edit</h4>
 </div>
-<form id="edit_body_type_form" name="edit_body_type_form">
+<form id="edit_body_type_form" name="edit_places_form">
     <div class="modal-body">
 
         <div class="form-group">
-            <label for="name">Body Type<span class="mandatory">*</span></label>
-            <input id="name" class="form-control" name="name" type="text" value="<?php echo $body_type->name; ?>">
-            <input id="body_type_id"  name="body_type_id" type="hidden" value="<?php echo $body_type->id; ?>">
+            <label for="name">Places<span class="mandatory">*</span></label>
+            <input id="block" class="form-control" name="block" type="text" value="<?php echo $places->block; ?>">
+            <input id="cage" class="form-control" name="cage" type="text" value="<?php echo $places->cage; ?>">
+            <input id="places_id"  name="places_id" type="hidden" value="<?php echo $places->id; ?>">
         </div>
         <span id="rtn_msg_edit"></span>
     </div>
@@ -21,20 +22,23 @@
 <script type="text/javascript">
 
     //edit body type form validation
-    $("#edit_body_type_form").validate({
+    $("#places_type_form").validate({
         rules: {
-            name: "required"
+            block: "required",
+            cage:"required"
+            
         },
         messages: {
-            name: "Please enter a body type"
+            block: "Please enter a block",
+            cage: "please enter a cage"
         }, submitHandler: function (form)
         {
-            $.post(site_url + '/body_type/update_body_types', $('#edit_body_type_form').serialize(), function (msg)
+            $.post(site_url + '/places/update_place', $('#edit_place_form').serialize(), function (msg)
             {
                 if (msg == 1) {
                     $('#rtn_msg_edit').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully Updated!!.</strong></div>');
 
-                    window.location = site_url + '/body_type/manage_body_types';
+                    window.location = site_url + '/places/manage_places';
                 } else {
                     $('#rtn_msg_edit').html('<div class="alert alert-block alert-danger fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>An error occured.</strong></div>');
 

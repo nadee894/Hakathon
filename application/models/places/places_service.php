@@ -1,77 +1,66 @@
 <?php
 
-class Body_type_service extends CI_Model {
+class Places_service extends CI_Model {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('body_type/body_type_model');
+        $this->load->model('places/places_model');
     }
 
     /*
-     * Load All body type Details from database     
+     * Load All places Details from database     
      */
 
-    public function get_all_body_types() {
+    public function get_all_Places() {
 
-        $this->db->select('body_type.*,user.name as added_by_user');
-        $this->db->from('body_type');
-        $this->db->join('user', 'user.id =body_type.added_by');
-        $this->db->where('body_type.is_deleted', '0');
-        $this->db->order_by("body_type.added_date", "desc");
+        $this->db->select('places.*,user.name as added_by');
+        $this->db->from('places');
+        $this->db->join('user', 'user.id =places.added_by');
+        $this->db->where('places.is_deleted', '0');
+        $this->db->order_by("places.added_date", "desc");
         $query = $this->db->get();
         return $query->result();
     }
 
     /*
-     * Add new body type to database     
+     * Add new place to database     
      */
 
-    function add_new_body_type($body_type_model) {
-        return $this->db->insert('body_type', $body_type_model);
+    function add_new_place($places_model) {
+        return $this->db->insert('places', $places_model);
     }
 
     /*
      * Delete body type from database     
      */
 
-    function delete_body_type($body_type_id) {
+    function delete_place($places_id) {
         $data = array('is_deleted' => '1');
-        $this->db->where('id', $body_type_id);
-        return $this->db->update('body_type', $data);
+        $this->db->where('id', $places_id);
+        return $this->db->update('places', $data);
+    }
+
+ 
+
+    /*
+     * Update Places  
+     */
+
+    function update_Place($places_model) {
+        $data = array('name' => $places_model->get_name());
+      
+        $this->db->where('id', $places_model->get_id());
+        return $this->db->update('places', $data);
     }
 
     /*
-     * Change publish status of a body type    
+     * get body types details by passing places id as a parameter
      */
 
-    public function publish_body_types($body_type_model) {
-        $data = array('is_published' => $body_type_model->get_is_published());
-        $this->db->update('body_type', $data, array('id' => $body_type_model->get_id()));
-        return $this->db->affected_rows();
-    }
+    function get_places_id($places_model) {
 
-    /*
-     * Update body types   
-     */
-
-    function update_body_type($body_type_model) {
-        $data = array('name' => $body_type_model->get_name(),
-            'updated_date' => $body_type_model->get_updated_date(),
-            'updated_by' => $body_type_model->get_updated_by());
-
-
-        $this->db->where('id', $body_type_model->get_id());
-        return $this->db->update('body_type', $data);
-    }
-
-    /*
-     * get body types details by passing body_type id as a parameter
-     */
-
-    function get_body_type_by_id($body_type_model) {
-
-        $data = array('id' => $body_type_model->get_id(), 'is_deleted' => '0');
-        $query = $this->db->get_where('body_type', $data);
+        $data = array('id' => $places_model->get_id(), 'is_deleted' => '0');
+        $query = $this->db->get_where('places', $data);
         return $query->row();
     }
     

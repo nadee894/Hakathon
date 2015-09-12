@@ -1,87 +1,38 @@
 <?php
 
-class Body_type_model extends CI_Model {
+class Places_model extends CI_Model {
 
     var $id;
-    var $name;
-    var $is_published;
-    var $is_deleted;
-    var $added_date;
-    var $added_by;
-    var $updated_date;
-    var $updated_by;
+    var $block;
+    var $cage;
 
     function __construct() {
         parent::__construct();
     }
 
+    function getId() {
+        return $this->id;
+    }
 
+    function getBlock() {
+        return $this->block;
+    }
 
-function get_id() {
-    return $this->id;
-}
+    function getCage() {
+        return $this->cage;
+    }
 
-function get_name() {
-    return $this->name;
-}
+    function setId($id) {
+        $this->id = $id;
+    }
 
-function get_is_published() {
-    return $this->is_published;
-}
+    function setBlock($block) {
+        $this->block = $block;
+    }
 
-function get_is_deleted() {
-    return $this->is_deleted;
-}
-
-function get_added_date() {
-    return $this->added_date;
-}
-
-function get_added_by() {
-    return $this->added_by;
-}
-
-function get_updated_date() {
-    return $this->updated_date;
-}
-
-function get_updated_by() {
-    return $this->updated_by;
-}
-
-function set_id($id) {
-    $this->id = $id;
-}
-
-function set_name($name) {
-    $this->name = $name;
-}
-
-function set_is_published($is_published) {
-    $this->is_published = $is_published;
-}
-
-function set_is_deleted($is_deleted) {
-    $this->is_deleted = $is_deleted;
-}
-
-function set_added_date($added_date) {
-    $this->added_date = $added_date;
-}
-
-function set_added_by($added_by) {
-    $this->added_by = $added_by;
-}
-
-function set_updated_date($updated_date) {
-    $this->updated_date = $updated_date;
-}
-
-function set_updated_by($updated_by) {
-    $this->updated_by = $updated_by;
-}
-
-
+    function setCage($cage) {
+        $this->cage = $cage;
+    }
 
 }
 
