@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2015 at 10:18 AM
+-- Generation Time: Sep 12, 2015 at 10:20 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -43,7 +43,10 @@ CREATE TABLE IF NOT EXISTS `animal` (
 
 CREATE TABLE IF NOT EXISTS `category` (
 `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `is_deleted` enum('1','0') NOT NULL DEFAULT '0',
+  `added_by` int(11) NOT NULL,
+  `added_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
