@@ -29,7 +29,7 @@
             name: "Please enter a category"
         }, submitHandler: function(form)
         {
-            $.post(site_url + '/category/manage_category', $('#edit_category_form').serialize(), function(msg)
+            $.post(site_url + '/category/edit_category', $('#edit_category_form').serialize(), function(msg)
             {
                 if (msg == 1) {
                     $('#rtn_msg_edit').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');

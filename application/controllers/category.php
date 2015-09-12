@@ -51,7 +51,7 @@ class Category extends CI_Controller{
         echo $this->load->view('category/category_edit_pop_up', $data, TRUE);
     }
     
-    function edit_transmission() {
+    function edit_category() {
 
         $category_model = new Category_model();
         $category_service = new Category_service();

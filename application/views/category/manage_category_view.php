@@ -36,8 +36,8 @@
                                     <td><?php echo $result->name; ?></td>                                    
                                     <td align="center">
     <!--                                        <a href="<?php echo site_url(); ?>/manufacture/manage_manufactures" class="btn btn-success btn-xs"><i class="fa fa-pencil"  data-original-title="Update"></i></a>-->
-                                        <a class="btn btn-primary btn-xs" onclick="display_edit_manufacture_pop_up(<?php echo $result->id; ?>)"><i class="fa fa-pencil" data-original-title="Update"></i> </a>
-                                        <a class="btn btn-danger btn-xs" onclick="delete_manufacture(<?php echo $result->id; ?>)" ><i class="fa fa-trash-o " title="" data-original-title="Remove"></i></a>
+                                        <a class="btn btn-primary btn-xs" onclick="display_edit_category_pop_up(<?php echo $result->id; ?>)"><i class="fa fa-pencil" data-original-title="Update"></i> </a>
+                                        <a class="btn btn-danger btn-xs" onclick="delete_category(<?php echo $result->id; ?>)" ><i class="fa fa-trash-o " title="" data-original-title="Remove"></i></a>
 
                                     </td>
                                 </tr>
@@ -121,24 +121,24 @@
 
 
 
-                                                //delete transmissions
-                                                function delete_transmission(id) {
+                                                //delete category
+                                                function delete_category(id) {
 
-                                                    if (confirm('Are you sure want to delete this Transmission ?')) {
+                                                    if (confirm('Are you sure want to delete this Category ?')) {
 
                                                         $.ajax({
                                                             type: "POST",
-                                                            url: site_url + '/transmission/delete_transmissions',
+                                                            url: site_url + '/category/delete_category',
                                                             data: "id=" + id,
                                                             success: function(msg) {
                                                                 //alert(msg);
                                                                 if (msg == 1) {
                                                                     //document.getElementById(trid).style.display='none';
-                                                                    $('#transmission_' + id).hide();
-                                                                    toastr.success("Successfully deleted !!", "AutoVille");
+                                                                    $('#category_' + id).hide();
+                                                                    toastr.success("Successfully deleted !!", "Zoo");
                                                                 }
                                                                 else if (msg == 2) {
-                                                                    toastr.error("Cannot be deleted as it is already assigned to others. !!", "AutoVille");
+                                                                    toastr.error("Cannot be deleted as it is already assigned to others. !!", "Zoo");
                                                                 }
                                                             }
                                                         });
@@ -146,44 +146,15 @@
                                                 }
 
 
-                                                //change publish status of transmission
-                                                function change_publish_status(transmission_id, value, element) {
+                                                
+                                                //Edit category
+                                                function  display_edit_category_pop_up(category_id) {
 
-                                                    var condition = 'Do you want to activate this transmission ?';
-                                                    if (value == 0) {
-                                                        condition = 'Do you want to deactivate this transmission?';
-                                                    }
+                                                    $.post(site_url + '/category/load_edit_category_content', {category_id: category_id}, function(msg) {
 
-                                                    if (confirm(condition)) {
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            url: site_url + '/transmission/change_publish_status',
-                                                            data: "id=" + transmission_id + "&value=" + value,
-                                                            success: function(msg) {
-                                                                if (msg == 1) {
-                                                                    if (value == 1) {
-                                                                        $(element).parent().html('<a class="btn btn-success btn-xs" onclick="change_publish_status(' + transmission_id + ',0,this)" title="click to deactivate transmission"><i class="fa fa-check"></i></a>');
-                                                                    } else {
-                                                                        $(element).parent().html('<a class="btn btn-warning btn-xs" onclick="change_publish_status(' + transmission_id + ',1,this)" title="click to activate transmission"><i class="fa fa-exclamation-circle"></i></a>');
-                                                                    }
-
-                                                                } else if (msg == 2) {
-                                                                    alert('Error !!');
-                                                                }
-                                                            }
-                                                        });
-                                                    }
-                                                }
-
-
-                                                //Edit Transmission
-                                                function  display_edit_transmission_pop_up(transmission_id) {
-
-                                                    $.post(site_url + '/transmission/load_edit_transmission_content', {transmission_id: transmission_id}, function(msg) {
-
-                                                        $('#transmission_edit_content').html('');
-                                                        $('#transmission_edit_content').html(msg);
-                                                        $('#transmission_edit_div').modal('show');
+                                                        $('#category_edit_content').html('');
+                                                        $('#category_edit_content').html(msg);
+                                                        $('#category_edit_div').modal('show');
                                                     });
                                                 }
 </script>
