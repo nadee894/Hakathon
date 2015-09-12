@@ -13,12 +13,13 @@ class Category_service extends CI_Model{
     
     public function get_all_categories() {
 
-        $this->db->select('category.*,user.name as added_by_user');
+        $this->db->select('category.*');
         $this->db->from('category');
-        $this->db->join('user', 'user.id = category.added_by');
+        //$this->db->join('user', 'user.id = category.added_by');
         $this->db->where('category.is_deleted', '0');
         $this->db->order_by("category.added_date", "desc");
         $query = $this->db->get();
+        //echo $this->db->last_query();
         return $query->result();
     }
     
