@@ -115,7 +115,7 @@
 <script src="<?php echo base_url(); ?>backend_resources/assets/toastr-master/toastr.js"></script>
 <script type="text/javascript">
 
-                                            $('#vehicle_spec_menu').addClass('active open');
+                                            $('#animal_mngt_menu').addClass('active open');
 
                                             $(document).ready(function () {
 
@@ -125,13 +125,17 @@
 
                                                 $("#animal_add_form").validate({
                                                     rules: {
-                                                        name: "required"
+                                                        name: "required",
+                                                        category_id: "required",
+                                                        place_id: "required"
                                                     },
                                                     messages: {
-                                                        name: "Please enter a Vehicle Model"
+                                                        name: "Please Enter Animal Name",
+                                                        category_id: "This Field is required",
+                                                        place_id: "This Field is required",
                                                     }, submitHandler: function (form)
                                                     {
-                                                        $.post(site_url + '/vehicle_model/add_new_vehicle_model', $('#animal_add_form').serialize(), function (msg)
+                                                        $.post(site_url + '/animal/add_animal', $('#animal_add_form').serialize(), function (msg)
                                                         {
                                                             if (msg == 1) {
                                                                 $('#rtn_msg').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');

@@ -20,14 +20,14 @@ class Animal extends CI_Controller {
         $this->template->load('template/main_template', $parials, $data);
     }
 
-    function add_new_vehicle_model() {
+    function add_animal() {
 
         $animal_model = new Animal_model();
         $animal_service = new Animal_service();
 
-        $animal_model->set_name($name);
-        $animal_model->set_category_id();
-        $animal_model->set_place_id('1');
+        $animal_model->set_name($this->input->post('name', TRUE));
+        $animal_model->set_category_id($this->input->post('category_id', TRUE));
+        $animal_model->set_place_id($this->input->post('place_id', TRUE));
         $animal_model->set_is_deleted('0');
         $animal_model->set_added_date(date("Y-m-d H:i:s"));
         $animal_model->set_added_by('1');

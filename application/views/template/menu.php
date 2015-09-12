@@ -19,7 +19,7 @@
     </li>
 
     <li class="sub-menu">
-        <a href="javascript:;" id="user_menu">
+        <a href="javascript:;" id="animal_mngt_menu">
             <i class="fa fa-users"></i>
             <span>Animal Management</span>
         </a> 
