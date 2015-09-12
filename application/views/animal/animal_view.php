@@ -16,7 +16,13 @@
                                 Add New
                                 <i class="fa fa-plus"></i>
                             </a>
-                        </div>                
+                        </div>
+                        <a class="" style="cursor: pointer" id="print_animal_rept" title="Print" onclick="print_animal_report()"> 
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-print fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
                     </div>                        
                     <table  class="display table table-bordered table-striped" id="vehicle_model_table">
                         <thead>
@@ -116,13 +122,11 @@
 <script type="text/javascript">
 
                                             $('#animal_mngt_menu').addClass('active open');
-
                                             $(document).ready(function () {
 
                                                 //var manufacturer = $('#manufacturer').val();
 
                                                 $('#vehicle_model_table').dataTable();
-
                                                 $("#animal_add_form").validate({
                                                     rules: {
                                                         name: "required",
@@ -145,13 +149,9 @@
                                                                 $('#rtn_msg').html('<div class="alert alert-block alert-danger fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>An error occured.</strong></div>');
                                                             }
                                                         });
-
-
                                                     }
                                                 });
                                             });
-
-
                                             //vehicle model delete function
                                             function delete_animal(animal_id) {
 
@@ -165,7 +165,6 @@
                                                             if (msg == 1) {
                                                                 $("#animal_" + animal_id).hide();
                                                                 toastr.success("Successfully deleted !!", "AutoVille");
-
                                                             } else if (msg == 2) {
                                                                 alert('Cannot be deleted!');
                                                             }
@@ -184,8 +183,12 @@
                                                     $('#animal_edit_content').html(msg);
                                                     $('#animal_edit_model').modal('show');
                                                 });
+                                            }
 
+                                            function print_animal_report() {
 
+                                                var win = window.open(site_url + '/animal/print_animal_report', '_blank');
+                                                win.focus();
                                             }
 </script>
 
