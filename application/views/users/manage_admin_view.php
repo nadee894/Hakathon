@@ -1,7 +1,7 @@
 
 
 <header class="panel-heading">
-    Manage Administrators
+    Manage Users
     <span class="tools pull-right">
         <a href="javascript:;" class="fa fa-chevron-down"></a>
         <a href="javascript:;" class="fa fa-times"></a>
@@ -91,7 +91,7 @@
 
                                     <a class="btn btn-danger btn-xs" onclick="load_after_deleted(<?php echo $result->id; ?>)" ><i class="fa fa-trash-o " title="" title="Remove"></i></a>
 
-                                    <a class="btn btn-info btn-xs" href="<?php echo site_url(); ?>/user_privilege/manage_user_privileges/<?php echo $result->id; ?>">Assign Privileges</a>
+                                    <!--<a class="btn btn-info btn-xs" href="<?php echo site_url(); ?>/user_privilege/manage_user_privileges/<?php echo $result->id; ?>">Assign Privileges</a>-->
                                 </span>
 
 
