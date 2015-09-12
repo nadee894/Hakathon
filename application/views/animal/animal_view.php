@@ -33,14 +33,14 @@
                             $i = 0;
                             foreach ($results as $result) {
                                 ?>
-                                <tr id="vehicle_model_<?php echo $result->id; ?>">
+                                <tr id="animal_<?php echo $result->id; ?>">
                                     <td><?php echo ++$i; ?></td>
                                     <td><?php echo $result->name; ?></td>
                                     <td><?php echo $result->category; ?></td>
-                                    <?php echo $result->block . ' ' . $result->cage; ?>
+                                    <td><?php echo $result->block . ' ' . $result->cage; ?></td>
 
                                     <td align="center">
-                                        <a class="btn btn-primary btn-xs" onclick="edit_animal('<?php echo $result->id; ?>')"><i class="fa fa-pencil"  data-original-title="Update"></i></a>                                        
+                                        <a class="btn btn-primary btn-xs" onclick="load_animal('<?php echo $result->id; ?>')"><i class="fa fa-pencil"  data-original-title="Update"></i></a>                                        
                                         <a class="btn btn-danger btn-xs" onclick="delete_animal('<?php echo $result->id; ?>')"><i class="fa fa-trash-o " title="" data-original-title="Remove"></i></a>
                                     </td>
                                 </tr>
@@ -153,17 +153,17 @@
 
 
                                             //vehicle model delete function
-                                            function delete_vehicle_model(animal_id) {
+                                            function delete_animal(animal_id) {
 
                                                 if (confirm('Are you sure want to delete this Animal ?')) {
 
                                                     $.ajax({
                                                         type: "POST",
-                                                        url: site_url + '/animal/delete_vehicle_model',
-                                                        data: "id=" + id,
+                                                        url: site_url + '/animal/delete_animal',
+                                                        data: "id=" + animal_id,
                                                         success: function (msg) {
                                                             if (msg == 1) {
-                                                                $("#vehicle_model_" + id).hide();
+                                                                $("#animal_" + animal_id).hide();
                                                                 toastr.success("Successfully deleted !!", "AutoVille");
 
                                                             } else if (msg == 2) {
@@ -176,7 +176,7 @@
                                             }
 
 
-                                            function edit_animal(animal_id) {
+                                            function load_animal(animal_id) {
 
                                                 $.post(site_url + '/animal/load_animal', {id: animal_id}, function (msg) {
 

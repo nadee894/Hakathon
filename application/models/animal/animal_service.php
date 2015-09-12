@@ -41,7 +41,7 @@ class Animal_service extends CI_Model {
 
     public function get_animal($id) {
 
-        $this->db->select('animal.*,category.name as category,places.block,places.cage');
+        $this->db->select('animal.*,category.id as cat_id,category.name as category,places.id as place_id,places.block,places.cage');
         $this->db->from('animal');
         $this->db->join('category', 'category.id = animal.id');
         $this->db->join('places', 'places.id=animal.id');
@@ -49,7 +49,7 @@ class Animal_service extends CI_Model {
         $this->db->where('animal.id', $id);
         $this->db->order_by("animal.id", "desc");
         $query = $this->db->get();
-        return $query->result();
+        return $query->row();
     }
 
 }

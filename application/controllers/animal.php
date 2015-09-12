@@ -42,7 +42,7 @@ class Animal extends CI_Controller {
         echo $animal_service->delete_animal($this->input->post('id', TRUE));
     }
 
-    function edit_vehicle_model() {
+    function edit_animal() {
 
         $animal_model = new Animal_model();
         $animal_service = new Animal_service();
