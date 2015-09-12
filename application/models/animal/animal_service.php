@@ -39,4 +39,17 @@ class Animal_service extends CI_Model {
         return $this->db->update('animal', $data);
     }
 
+    public function get_animal($id) {
+
+        $this->db->select('animal.*,category.name as category,places.block,places.cage');
+        $this->db->from('animal');
+        $this->db->join('category', 'category.id = animal.id');
+        $this->db->join('places', 'places.id=animal.id');
+        $this->db->where('animal.is_deleted', '0');
+        $this->db->where('animal.id', $id);
+        $this->db->order_by("animal.id", "desc");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
 }

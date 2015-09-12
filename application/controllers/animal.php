@@ -35,49 +35,32 @@ class Animal extends CI_Controller {
         echo $animal_service->add_animal($animal_model);
     }
 
-    /*
-     * This is to delete a vehicle model     
-     */
+    function delete_animal() {
 
-    function delete_vehicle_model() {
+        $animal_service = new Animal_service();
 
-        $vehicle_model_service = new Vehicle_model_service();
-
-        echo $vehicle_model_service->delete_vehicle_model(trim($this->input->post('id', TRUE)));
+        echo $animal_service->delete_animal($this->input->post('id', TRUE));
     }
-
-    /*
-     * This function is to change publish status of a vehicle model using 
-     * publish_vehicle_model function in vehicle_model_service
-     */
-
-    function change_publish_status() {
-        $vehicle_model_model = new Vehicle_model_model();
-        $vehicle_model_service = new Vehicle_model_service();
-
-        $vehicle_model_model->set_id(trim($this->input->post('id', TRUE)));
-        $vehicle_model_model->set_is_published(trim($this->input->post('value', TRUE)));
-
-        echo $vehicle_model_service->publish_vehicle_model($vehicle_model_model);
-    }
-
-    /*
-     * edit_vehicle_model function using the update_vehicle_model function in the 
-     * Vehicle_model_service
-     */
 
     function edit_vehicle_model() {
 
-        $vehicle_model_model = new Vehicle_model_model();
-        $vehicle_model_service = new Vehicle_model_service();
+        $animal_model = new Animal_model();
+        $animal_service = new Animal_service();
 
-        $vehicle_model_model->set_id($this->input->post('vehicle_model_id', TRUE));
-        $vehicle_model_model->set_manufacturer_id(trim($this->input->post('manufacturer', TRUE)));
-        $vehicle_model_model->set_name($this->input->post('name', TRUE));
-        $vehicle_model_model->set_updated_date(date("Y-m-d H:i:s"));
-        $vehicle_model_model->set_updated_by($this->session->userdata('USER_ID'));
+        $animal_model->set_name($this->input->post('name', TRUE));
+        $animal_model->set_category_id($this->input->post('category_id', TRUE));
+        $animal_model->set_place_id($this->input->post('place_id', TRUE));
 
-        echo $vehicle_model_service->update_vehicle_model($vehicle_model_model);
+        echo $animal_service->update_animal($animal_model);
+    }
+
+    function load_animal() {
+
+        $animal_service = new Animal_service();
+
+        $data['animal'] = $animal_service->get_animal($this->input->post('id', TRUE));
+
+        echo $this->load->view('animal/animal_edit_popup', $data, TRUE);
     }
 
 }

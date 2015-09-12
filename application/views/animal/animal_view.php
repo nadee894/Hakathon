@@ -103,9 +103,9 @@
 <!-- modal -->
 
 <!--Vehicle Model Edit Modal -->
-<div  class="modal fade " id="vehicle_model_edit_div" tabindex="-1" role="dialog" aria-hidden="true">
+<div  class="modal fade " id="animal_edit_model" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" id="vehicle_model_edit_content">
+        <div class="modal-content" id="animal_edit_content">
 
         </div>
     </div>
@@ -155,11 +155,11 @@
                                             //vehicle model delete function
                                             function delete_vehicle_model(animal_id) {
 
-                                                if (confirm('Are you sure want to delete this Vehicle Model ?')) {
+                                                if (confirm('Are you sure want to delete this Animal ?')) {
 
                                                     $.ajax({
                                                         type: "POST",
-                                                        url: site_url + '/vehicle_model/delete_vehicle_model',
+                                                        url: site_url + '/animal/delete_vehicle_model',
                                                         data: "id=" + id,
                                                         success: function (msg) {
                                                             if (msg == 1) {
@@ -178,11 +178,11 @@
 
                                             function edit_animal(animal_id) {
 
-                                                $.post(site_url + '/vehicle_model/load_edit_vehicle_model_content', {vehicle_model_id: vehicle_model_id}, function (msg) {
+                                                $.post(site_url + '/animal/load_animal', {id: animal_id}, function (msg) {
 
-                                                    $('#vehicle_model_edit_content').html('');
-                                                    $('#vehicle_model_edit_content').html(msg);
-                                                    $('#vehicle_model_edit_div').modal('show');
+                                                    $('#animal_edit_content').html('');
+                                                    $('#animal_edit_content').html(msg);
+                                                    $('#animal_edit_model').modal('show');
                                                 });
 
 
