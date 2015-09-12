@@ -8,14 +8,14 @@ class Users extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        if (!$this->session->userdata('USER_LOGGED_IN')) {
-            redirect(site_url() . '/login/load_login');
-        } else {
+//        if (!$this->session->userdata('USER_LOGGED_IN')) {
+//            redirect(site_url() . '/login/load_login');
+//        } else {
             $this->load->model('users/user_model');
             $this->load->model('users/user_service');
 
-            $this->load->model('access_controll/access_controll_service');
-        }
+//            $this->load->model('access_controll/access_controll_service');
+//        }
     }
 
     function manage_admins() {

@@ -8,7 +8,16 @@ class Animal_model extends CI_Model {
     var $name;
     var $is_deleted;
     var $added_by;
-    
+    var $added_date;
+
+    function get_added_date() {
+        return $this->added_date;
+    }
+
+    function set_added_date($added_date) {
+        $this->added_date = $added_date;
+    }
+
     function get_id() {
         return $this->id;
     }
@@ -57,6 +66,4 @@ class Animal_model extends CI_Model {
         $this->added_by = $added_by;
     }
 
-
-    
 }
