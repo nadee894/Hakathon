@@ -140,11 +140,11 @@ class User_service extends CI_Model {
             'email'        => $user_model->get_email(),
             'address'      => $user_model->get_address(),
             'contact_no_1' => $user_model->get_contact_no_1(),
-            'contact_no_2' => $user_model->get_contact_no_2(),
+            
             'password'     => $user_model->get_password(),
-            'profile_pic'  => $user_model->get_profile_pic(),
-            'updated_by'   => $user_model->get_updated_by(),
-            'updated_date' => $user_model->get_updated_date());
+            
+            'added_by'   => $user_model->get_updated_by(),
+            'added_date' => $user_model->get_updated_date());
         $this->db->where('id', $user_model->get_id());
         return $this->db->update('user', $data);
     }

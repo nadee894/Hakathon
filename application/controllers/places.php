@@ -81,9 +81,9 @@ class Places extends CI_Controller {
 
         $places_model = new Places_model();
         $places_service = new Places_service();
-
-        $places_model->set_id($this->input->post('places_id', TRUE));
-        $places_model->set_name($this->input->post('name', TRUE));
+        $places_model->setId($this->input->post('places_id', TRUE));
+        $places_model->setBlock($this->input->post('block', TRUE));
+        $places_model->setCage($this->input->post('cage', TRUE));
 //        $places_model->set_updated_date(date("Y-m-d H:i:s"));
 
         echo $places_service->update_Place($places_model);

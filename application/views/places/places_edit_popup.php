@@ -2,7 +2,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title">Places Quick Edit</h4>
 </div>
-<form id="edit_body_type_form" name="edit_places_form">
+<form id="edit_place_form" name="edit_place_form">
     <div class="modal-body">
 
         <div class="form-group">
@@ -22,7 +22,7 @@
 <script type="text/javascript">
 
     //edit body type form validation
-    $("#places_type_form").validate({
+    $("#edit_place_form").validate({
         rules: {
             block: "required",
             cage:"required"

@@ -19,7 +19,7 @@ class Places_service extends CI_Model {
         $this->db->where('places.is_deleted', '0');
 //        $this->db->order_by("places.added_date", "desc");
         $query = $this->db->get();
-        
+
         return $query->result();
     }
 
@@ -41,16 +41,14 @@ class Places_service extends CI_Model {
         return $this->db->update('places', $data);
     }
 
- 
-
     /*
      * Update Places  
      */
 
     function update_Place($places_model) {
-        $data = array('name' => $places_model->get_name());
-      
-        $this->db->where('id', $places_model->get_id());
+        $data = array('block' => $places_model->getBlock(), 'cage' => $places_model->getCage());
+
+        $this->db->where('id', $places_model->getId());
         return $this->db->update('places', $data);
     }
 
@@ -64,9 +62,5 @@ class Places_service extends CI_Model {
         $query = $this->db->get_where('places', $data);
         return $query->row();
     }
-    
-    
 
 }
-
-

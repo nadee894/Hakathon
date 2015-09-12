@@ -42,7 +42,7 @@
 
                                     <td align="center">
                                         <a class="btn btn-primary btn-xs" onclick="display_edit_places_pop_up(<?php echo $result->id; ?>)"><i class="fa fa-pencil" title="Update"></i></a>
-                                        <a class="btn btn-danger btn-xs" onclick="delete_places<?php echo $result->id; ?>)"><i class="fa fa-trash-o " title="" title="Remove"></i></a>
+                                        <a class="btn btn-danger btn-xs" onclick="delete_places(<?php echo $result->id; ?>)"><i class="fa fa-trash-o " title="" title="Remove"></i></a>
 
                                     </td>
                                 </tr>
@@ -217,7 +217,7 @@
                                                         if (msg == 1) {
                                                             //document.getElementById(trid).style.display='none';
                                                             $('#places_' + id).hide();
-                                                            toastr.success("Successfully deleted !!", "AutoVille");
+                                                            
                                                         }
                                                         else if (msg == 2) {
                                                             alert('Cannot be deleted as it is already assigned to others. !!');
