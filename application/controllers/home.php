@@ -8,8 +8,10 @@ class Home extends CI_Controller {
 
     function index() {
 
-        //$partials = array('content' => '');
-        $this->template->load('home_view');
+        
+        $partials = array('content' => 'dashboard');
+        $this->template->load('template/main_template', $partials);
+  
     }
 
 }
