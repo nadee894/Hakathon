@@ -5,6 +5,9 @@ class Places_model extends CI_Model {
     var $id;
     var $block;
     var $cage;
+    var $is_deleted;
+    var $added_by;
+    var $added_date;
 
     function __construct() {
         parent::__construct();
@@ -33,6 +36,31 @@ class Places_model extends CI_Model {
     function setCage($cage) {
         $this->cage = $cage;
     }
+
+    function getIs_deleted() {
+        return $this->is_deleted;
+    }
+
+    function getAdded_by() {
+        return $this->added_by;
+    }
+
+    function getAdded_date() {
+        return $this->added_date;
+    }
+
+    function setIs_deleted($is_deleted) {
+        $this->is_deleted = $is_deleted;
+    }
+
+    function setAdded_by($added_by) {
+        $this->added_by = $added_by;
+    }
+
+    function setAdded_date($added_date) {
+        $this->added_date = $added_date;
+    }
+
 
 }
 

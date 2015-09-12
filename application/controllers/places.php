@@ -43,7 +43,7 @@ class Places extends CI_Controller {
 
         $places_model->setBlock($this->input->post('block', TRUE));
         $places_model->setCage($this->input->post('cage', TRUE));
-        $places_model->set_is_deleted('0');
+        $places_model->setIs_deleted('0');
 
         echo $places_service->add_new_place($places_model);
     }
@@ -66,7 +66,7 @@ class Places extends CI_Controller {
         $places_model = new Places_model();
         $places_service = new Places_service();
 
-        $places_model->set_id(trim($this->input->post('places_id', TRUE)));
+        $places_model->setId(trim($this->input->post('places_id', TRUE)));
         $places = $places_service->get_places_id($places_model);
         $data['places'] = $places;
 

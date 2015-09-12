@@ -13,12 +13,13 @@ class Places_service extends CI_Model {
 
     public function get_all_Places() {
 
-        $this->db->select('places.*,user.name as added_by');
+        $this->db->select('places.*');
         $this->db->from('places');
-        $this->db->join('user', 'user.id =places.added_by');
+//        $this->db->join('user', 'user.id =places.added_by');
         $this->db->where('places.is_deleted', '0');
-        $this->db->order_by("places.added_date", "desc");
+//        $this->db->order_by("places.added_date", "desc");
         $query = $this->db->get();
+        
         return $query->result();
     }
 
@@ -59,7 +60,7 @@ class Places_service extends CI_Model {
 
     function get_places_id($places_model) {
 
-        $data = array('id' => $places_model->get_id(), 'is_deleted' => '0');
+        $data = array('id' => $places_model->getId(), 'is_deleted' => '0');
         $query = $this->db->get_where('places', $data);
         return $query->row();
     }

@@ -170,7 +170,7 @@
                                         $(document).ready(function () {
                                             $('#places_table').dataTable();
 
-                                            $("#places_type_form").validate({
+                                            $("#add_places_form").validate({
                                                 rules: {
                                                     block: "required",
                                                     cage: "required"
@@ -184,7 +184,7 @@
                                                     }
                                                 }, submitHandler: function (form)
                                                 {
-                                                    $.post(site_url + '/places/add_places', $('#add_places_form').serialize(), function (msg)
+                                                    $.post(site_url + '/places/add_place', $('#add_places_form').serialize(), function (msg)
                                                     {
                                                         if (msg == 1) {
                                                             $('#rtn_msg').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');
