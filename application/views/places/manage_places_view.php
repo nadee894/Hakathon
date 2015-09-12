@@ -17,6 +17,12 @@
                                 <i class="fa fa-plus"></i>
                             </a>
                         </div>
+                        <a class="" style="cursor: pointer" id="print_animal_rept" title="Print" onclick="print_places_report()"> 
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-print fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
                     </div>
                     <table  class="display table table-bordered table-striped" id="places_table">
                         <thead>
@@ -57,14 +63,16 @@
     </div>
 </div>
 
-<!--Body Type add model-->
+<!--places add model-->
 <div class="modal fade " id="places_add_modal" tabindex="-1" role="dialog" aria-labelledby="places_add_modal_label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Add New Location</h4>
             </div>
+
             <form id="add_places_form" name="places_form">
                 <div class="modal-body">
 <!--                    <script src="<?php echo base_url(); ?>backend_resources/file_upload_plugin/ajaxupload.3.5.js" type="text/javascript"></script>
@@ -142,7 +150,7 @@
                             <button class="btn btn-success" type="submit">Save changes</button>
                         </div>
 
-                        
+
 
                     </div>
                 </div>
@@ -217,7 +225,7 @@
                                                         if (msg == 1) {
                                                             //document.getElementById(trid).style.display='none';
                                                             $('#places_' + id).hide();
-                                                            
+
                                                         }
                                                         else if (msg == 2) {
                                                             alert('Cannot be deleted as it is already assigned to others. !!');
@@ -240,7 +248,14 @@
                                             });
 
 
+
                                         }
+                                        
+                                        function print_places_report() {
+
+                                                var win = window.open(site_url + '/places/print_places_report', '_blank');
+                                                win.focus();
+                                            }
 
 </script>
 

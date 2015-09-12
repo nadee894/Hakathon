@@ -10,17 +10,11 @@ class User_model extends CI_Model {
     var $address;
     var $user_type;
     var $contact_no_1;
-    var $contact_no_2;
-    var $profile_pic;
     var $password;
-    var $account_activation_code;
-    var $is_online;
     var $is_published;
     var $is_deleted;
     var $added_by;
     var $added_date;
-    var $updated_date;
-    var $updated_by;
 
     function __construct() {
         parent::__construct();
@@ -122,7 +116,7 @@ class User_model extends CI_Model {
         $this->address = $address;
     }
 
-        function set_name($name) {
+    function set_name($name) {
         $this->name = $name;
     }
 

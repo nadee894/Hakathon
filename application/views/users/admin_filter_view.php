@@ -10,13 +10,7 @@ foreach ($results as $result) {
             <div class="panel-body">
                 <div class="media" >
 
-                    <a class="pull-left" href="#">
-                        <?php if (empty($result->profile_pic)) { ?>
-                            <img alt="" class="thumb media-object" height="120" width="100" src="<?php echo base_url(); ?>/uploads/user_avatars/avatar.jpg" >
-                        <?php } else { ?>
-                            <img alt="" class="thumb media-object" height="120" width="100" src="<?php echo base_url(); ?>/uploads/user_avatars/<?php echo $result->profile_pic; ?>" >
-                        <?php } ?>
-                    </a>
+       
 
                     <div class="media-body" >
 

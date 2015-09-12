@@ -25,7 +25,7 @@
         </a> 
         <ul class="sub">
             <li><a  href="<?php echo site_url(); ?>/users/manage_admins" onclick="">Category</a></li>
-            <li><a  href="<?php echo site_url(); ?>/reg_users/manage_registered_users">Places</a></li>
+            <li><a  href="<?php echo site_url(); ?>/places/manage_places">Places</a></li>
             <li><a  href="<?php echo site_url(); ?>/animal">Animal</a></li>
         </ul>
     </li>

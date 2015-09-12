@@ -89,4 +89,22 @@ class Places extends CI_Controller {
         echo $places_service->update_Place($places_model);
     }
 
+     function print_places_report() {
+
+         $places_service = new Places_service();       
+
+        $data['heading'] = "Manage Locations";
+        $data['results'] = $places_service->get_all_Places();
+
+        $print_out = $this->load->view('places/places_rep_print', $data, TRUE);
+
+        $footer = $this->load->view('template/custom/pdf_footer', $data, TRUE);
+        $this->load->library('MPDF56/mpdf');
+        $mpdf = new Mpdf('utf-8', 'A4');
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->SetFooter($footer);
+        $mpdf->WriteHTML($print_out);
+        $mpdf->Output();
+    }
+
 }
