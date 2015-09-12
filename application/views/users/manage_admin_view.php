@@ -229,12 +229,12 @@
                             <input name="contact_no_1" type="text" class="form-control" id="contact_no_1" placeholder=" ">
                         </div>
                     </div>
-                    <div class="form-group">
+<!--                    <div class="form-group">
                         <label  class="col-lg-3 control-label">Contact No 02</label>
                         <div class="col-lg-8">
                             <input name="contact_no_2" type="text" class="form-control" id="contact_no_2" placeholder=" ">
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="form-group">
                         <label  class="col-lg-3 control-label">Password</label>
